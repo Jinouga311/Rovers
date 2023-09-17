@@ -14,6 +14,16 @@ class RoverTest {
     }
 
     @Test
+    void testGetters() {
+        assertEquals(1, rover.getX());
+        assertEquals(2, rover.getY());
+        assertEquals(Direction.N, rover.getDirection());
+        assertEquals(5, rover.getMaxX());
+        assertEquals(5, rover.getMaxY());
+    }
+
+
+    @Test
     void testMoveValid() {
         rover.move();
         assertEquals(1, rover.getX());
