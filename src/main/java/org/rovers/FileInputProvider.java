@@ -1,6 +1,7 @@
 package org.rovers;
 
 import lombok.Getter;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.BufferedReader;
@@ -10,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Getter
+@Setter
 @Slf4j
 public class FileInputProvider implements InputProvider {
     private final String filePath;

@@ -1,8 +1,10 @@
 package org.rovers;
 
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
+@Setter
 public class RoverInstructions {
     private final int x;
     private final int y;
