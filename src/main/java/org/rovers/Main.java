@@ -10,18 +10,12 @@ import java.util.logging.Logger;
 public class Main {
     public static void main(String[] args) {
 
-        String filePath = "C:\\Users\\wwwaz\\Music\\rovers\\input.txt";
-/*
         if (args.length == 0) {
             System.err.println("Please provide the input file path.");
             return;
-        }*
-
+        }
         try {
-            InputProvider inputProvider = new FileInputProvider(args[0]);*/
-
-        try {
-            InputProvider inputProvider = new FileInputProvider(filePath);
+            InputProvider inputProvider = new FileInputProvider(args[0]);
             List<RoverInstructions> roverInstructionsList = inputProvider.getInstructions();
             for (RoverInstructions roverInstructions : roverInstructionsList) {
                 Rover rover = new Rover(roverInstructions.getX(), roverInstructions.getY(), roverInstructions.getDirection(), roverInstructions.getMaxX(), roverInstructions.getMaxY());
