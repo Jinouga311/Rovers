@@ -11,7 +11,7 @@ public class Main {
     public static void main(String[] args) {
 
         if (args.length == 0) {
-            System.err.println("Please provide the input file path.");
+            log.error("Please provide the input file path.");
             return;
         }
         try {
