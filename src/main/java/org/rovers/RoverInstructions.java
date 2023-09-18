@@ -1,10 +1,12 @@
 package org.rovers;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
+@AllArgsConstructor
 public class RoverInstructions {
     private final int x;
     private final int y;
@@ -13,12 +15,5 @@ public class RoverInstructions {
     private final int maxX;
     private final int maxY;
 
-    public RoverInstructions(int x, int y, Direction direction, String instructions, int maxX, int maxY) {
-        this.x = x;
-        this.y = y;
-        this.direction = direction;
-        this.instructions = instructions;
-        this.maxX = maxX;
-        this.maxY = maxY;
-    }
+
 }
