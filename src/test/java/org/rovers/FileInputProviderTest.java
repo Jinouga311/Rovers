@@ -6,6 +6,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -43,6 +44,7 @@ class FileInputProviderTest {
         assertEquals(3, instructions.get(1).getY());
         assertEquals(Direction.E, instructions.get(1).getDirection());
         assertEquals("MMRMMRMRRM", instructions.get(1).getInstructions());
+        Files.delete(file.toPath());
     }
 
     @Test
@@ -52,6 +54,7 @@ class FileInputProviderTest {
             File file = createTestFile("invalid_plateau.txt", "-5 5\n1 2 N\nLMLMLMLMM\n");
             FileInputProvider provider = new FileInputProvider(file.getAbsolutePath());
             provider.getInstructions();
+            Files.delete(file.toPath());
         });
     }
 
@@ -62,6 +65,7 @@ class FileInputProviderTest {
             File file = createTestFile("invalid_start_position.txt", "5 5\n6 2 N\nLMLMLMLMM\n");
             FileInputProvider provider = new FileInputProvider(file.getAbsolutePath());
             provider.getInstructions();
+            Files.delete(file.toPath());
         });
     }
 
@@ -72,6 +76,7 @@ class FileInputProviderTest {
             File file = createTestFile("invalid_start_direction.txt", "5 5\n1 2 X\nLMLMLMLMM\n");
             FileInputProvider provider = new FileInputProvider(file.getAbsolutePath());
             provider.getInstructions();
+            Files.delete(file.toPath());
         });
     }
 
@@ -82,6 +87,7 @@ class FileInputProviderTest {
             File file = createTestFile("missing_instructions.txt", "5 5\n1 2 N\n");
             FileInputProvider provider = new FileInputProvider(file.getAbsolutePath());
             provider.getInstructions();
+            Files.delete(file.toPath());
         });
     }
 }

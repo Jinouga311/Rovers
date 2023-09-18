@@ -1,5 +1,7 @@
 package org.rovers;
 
+import ch.qos.logback.classic.spi.ILoggingEvent;
+import ch.qos.logback.core.read.ListAppender;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -9,6 +11,11 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.nio.file.Files;
+
+import ch.qos.logback.classic.Logger;
+import ch.qos.logback.classic.spi.ILoggingEvent;
+import ch.qos.logback.core.read.ListAppender;
+import org.slf4j.LoggerFactory;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -41,13 +48,19 @@ class MainTest {
         File file = new File(TEST_DATA_DIR, "valid_input.txt");
         Files.write(file.toPath(), input.getBytes());
 
-        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outContent));
+        Logger logger = (Logger) LoggerFactory.getLogger(Logger.ROOT_LOGGER_NAME);
+        ListAppender<ILoggingEvent> listAppender = new ListAppender<>();
+        listAppender.start();
+        logger.addAppender(listAppender);
 
         Main.main(new String[]{file.getAbsolutePath()});
 
-        assertEquals("1 3 N\n5 1 E\n", outContent.toString());
-
+        String logs = listAppender.list.stream()
+                .filter(event -> event.getFormattedMessage().startsWith("Résultat :"))
+                .findFirst()
+                .map(ILoggingEvent::getFormattedMessage)
+                .orElse("");
+        assertEquals("Résultat :\n1 3 N\n5 1 E\n", logs);
         Files.delete(file.toPath());
     }
 
