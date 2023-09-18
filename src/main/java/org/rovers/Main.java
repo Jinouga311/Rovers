@@ -15,13 +15,16 @@ public class Main {
             return;
         }
         try {
+            StringBuilder finalResults = new StringBuilder();
+            finalResults.append("Résultat :\n");
             InputProvider inputProvider = new FileInputProvider(args[0]);
             List<RoverInstructions> roverInstructionsList = inputProvider.getInstructions();
             for (RoverInstructions roverInstructions : roverInstructionsList) {
                 Rover rover = new Rover(roverInstructions.getX(), roverInstructions.getY(), roverInstructions.getDirection(), roverInstructions.getMaxX(), roverInstructions.getMaxY());
                 rover.executeCommands(roverInstructions.getInstructions());
-                log.info("RESULTAT : (" + rover.getX() +", " + (rover.getY()) + ", " + rover.getDirection() + ") ✅");
+                finalResults.append(rover.getX()).append(" ").append(rover.getY()).append(" ").append(rover.getDirection()).append("\n");
             }
+            log.info(finalResults.toString());
         } catch (IOException e) {
             log.error(e.getMessage());
             e.printStackTrace();
