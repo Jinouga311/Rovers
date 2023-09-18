@@ -14,6 +14,4 @@ public class RoverInstructions {
     private final String instructions;
     private final int maxX;
     private final int maxY;
-
-
 }
