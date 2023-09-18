@@ -18,11 +18,7 @@ public class Rover {
     private Direction direction;
     private final int maxX;
     private final int maxY;
-    private final Map<Character, Command> commandMap = Map.of(
-            'M', new MoveCommand(),
-            'L', new LeftCommand(),
-            'R', new RightCommand()
-    );
+    private final Map<Character, Command> commandMap;
 
     public Rover(int x, int y, Direction direction, int maxX, int maxY) {
         this.x = x;
@@ -30,6 +26,7 @@ public class Rover {
         this.direction = direction;
         this.maxX = maxX;
         this.maxY = maxY;
+        this.commandMap = CommandFactory.createCommandMap();
     }
 
     public void executeCommands(String instructions) {
