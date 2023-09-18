@@ -6,10 +6,10 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public enum Direction {
-    N(0, 1),
-    E(1, 0),
-    S(0, -1),
-    W(-1, 0);
+    N(0, 1), //North
+    E(1, 0), //East
+    S(0, -1), //South
+    W(-1, 0); //West
 
     private final int dx;
     private final int dy;
