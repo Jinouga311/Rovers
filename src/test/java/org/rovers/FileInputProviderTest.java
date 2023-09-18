@@ -2,9 +2,7 @@ package org.rovers;
 
 import org.junit.jupiter.api.Test;
 
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.List;
@@ -21,9 +19,7 @@ class FileInputProviderTest {
 
     private static File createTestFile(String fileName, String content) throws IOException {
         File file = new File(TEST_DATA_DIR, fileName);
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
-            writer.write(content);
-        }
+        Files.write(file.toPath(), content.getBytes());
         return file;
     }
 
