@@ -47,7 +47,6 @@ public class Rover {
     public void move() {
         int newX = x + direction.getDx();
         int newY = y + direction.getDy();
-
         log.info(x + " + " + direction.getDx());
         log.info(y + " + " + direction.getDy());
         log.info("Trying to move to: (" + newX + ", " + newY + ")");
