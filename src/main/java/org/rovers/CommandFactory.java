@@ -9,7 +9,8 @@ public class CommandFactory {
         return Map.of(
                 'M', new MoveCommand(),
                 'L', new LeftCommand(),
-                'R', new RightCommand()
+                'R', new RightCommand(),
+                'B', new BackCommand()
         );
     }
 }

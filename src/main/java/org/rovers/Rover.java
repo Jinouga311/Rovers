@@ -61,6 +61,19 @@ public class Rover {
         }
     }
 
+    public void moveBack() {
+        int newX = x - direction.getDx();
+        int newY = y - direction.getDy();
+
+        if (newX >= 0 && newX <= maxX && newY >= 0 && newY <= maxY) {
+            x = newX;
+            y = newY;
+        } else {
+            log.error("Movement out of bounds: " + newX + "," + newY);
+            throw new IllegalArgumentException("Movement out of bounds: " + newX + "," + newY);
+        }
+    }
+
     public void turnLeft() {
         direction = direction.left();
         log.info("Turned left. Now facing: " + direction);
